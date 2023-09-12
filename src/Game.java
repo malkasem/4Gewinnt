@@ -3,8 +3,17 @@ public class Game {
 
         VierGewinnt g = new VierGewinnt();
 
-        g.initSpielBrett();
-        g.dispSpiellBrett();
+        Spieler p1 = new Spieler("P1", 'X');
+        Spieler p2 = new Spieler("P2", 'O');
+
+        Spieler cp;
+        cp = p1;
+
+
+        Spieler.makeMove();
+
+        g.initBoard();
+        g.displayBoard();
 
     }
 }

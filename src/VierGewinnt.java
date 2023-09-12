@@ -1,32 +1,46 @@
 public class VierGewinnt {
 
     int size = 7;
-    static char [][] spielBrett;
+    static char [][] board;
 
     public VierGewinnt() {
-        spielBrett = new char[7][7];
+        board = new char[7][7];
 
     }
 
-    void initSpielBrett() {
-        for(int i = 0; i < spielBrett.length; i++) {
-            for(int j = 0; j < spielBrett.length; j++) {
-                spielBrett[i][j] = ' ';
+    void initBoard() {
+        for(int i = 0; i < board.length; i++) {
+            for(int j = 0; j < board.length; j++) {
+                board[i][j] = ' ';
             }
         }
     }
 
-    void dispSpiellBrett () {
+    void displayBoard () {
         System.out.println("-----------------------------");
-        for( int i = 0; i < spielBrett.length; i++) {
+        for( int i = 0; i < board.length; i++) {
             System.out.print("| ");
-            for(int j = 0; j < spielBrett.length; j++) {
-                System.out.print(spielBrett[i][j] + " | ");
+            for(int j = 0; j < board.length; j++) {
+                System.out.print(board[i][j] + " | ");
             }
         System.out.println();
         System.out.println("-----------------------------");
         }
-
     }
+
+
+    boolean placeToken (int row, int col, char token){
+        for ( row = 6; row >= 0; row--){
+           if(board[row][col] == ' ') {
+               board[row][col] = token;
+               return true;
+           }
+        }
+        return false;
+    }
+
+
+
+
 
 }
