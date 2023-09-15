@@ -3,30 +3,55 @@ import java.util.Scanner;
 public class Spieler {
 
     String  name;
-    char token;
+    char stone;
 
-    Spieler(String name, char token){
+    Spieler(String name, char stone){
         this.name = name;
-        this.token = token;
+        this.stone = stone;
     }
 
-   static void makeMove(){
+    void makeMove(){
         Scanner scan = new Scanner(System.in);
-        int row;
+       // int row;
         int col;
-        System.out.println("geben Sie die Ziele und Spalte ein:  ");
-         row = scan.nextInt();
-         col = scan.nextInt();
+         do {
+             System.out.println("Geben die  Spalte ein:  ");
+           // row = scan.nextInt();
+             col = scan.nextInt();
+         } while (isValidMove(col));
+         int row = findAvailableRow(col);
+
+         VierGewinnt.dropToken(row, col, stone);
     }
 
-    boolean isValidMove(int row, int col){
-        if(row >= 0 && row <= 6 && col >= 0 && col <= 6) {
+    static boolean isValidMove(int col){
+        if(col < 0 || col >= VierGewinnt.board.length) {
+            System.out.println("Die Spalte ist ungültig. Bitt eine andere Spalte auswählen!");
+            return false;
+        }
+        /**
+        for( row = VierGewinnt.board.length -1; row >= 0; row--){
             if (VierGewinnt.board[row][col] == ' ') {
                 return true;
             }
         }
-        return false;
+         **/
+        if (findAvailableRow(col) == -1){
 
+        System.out.println("Die Spalte ist voll. Eine andere Spalte bitte auswählen! ");
+        return false;
+        }
+        return true;
+    }
+
+
+    static int findAvailableRow(int col) {
+        for( int row = VierGewinnt.board.length -1; row <= 0; row--){
+            if(VierGewinnt.board[row][col] == ' ') {
+                return row;
+            }
+        }
+        return -1;
     }
 
 
