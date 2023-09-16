@@ -39,8 +39,8 @@ public class VierGewinnt {
            }
         }
         return -1;
-
     }
+
     // Check Win Vertically
     static boolean checkWinVertical(char stone) {
         for (int row = 0; row < 4; row++) {

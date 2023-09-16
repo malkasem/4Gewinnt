@@ -1,33 +1,20 @@
 import java.util.Scanner;
 
-public class Spieler {
+abstract public class Spieler {
 
     String  name;
     char stone;
 
-    Spieler(String name, char stone){
-        this.name = name;
-        this.stone = stone;
+    Spieler(){
+
     }
 
-    void makeMove(){
-        Scanner scan = new Scanner(System.in);
-       // int row;
-        int col;
-         do {
-             System.out.println("Geben die  Spalte ein:  ");
-           // row = scan.nextInt();
-             col = scan.nextInt();
-         } while (isValidMove(col));
-         int row = findAvailableRow(col);
-
-         VierGewinnt.dropToken(row, col, stone);
-    }
+    abstract void makeMove();
 
     static boolean isValidMove(int col){
         if(col < 0 || col >= VierGewinnt.board.length) {
             System.out.println("Die Spalte ist ungültig. Bitt eine andere Spalte auswählen!");
-            return false;
+            return true;
         }
         /**
         for( row = VierGewinnt.board.length -1; row >= 0; row--){
