@@ -34,7 +34,7 @@ public class Game {
             return;
         }
 
-        Spieler cp;
+        Spieler cp; // Current Player
         cp = p1;
 
 
